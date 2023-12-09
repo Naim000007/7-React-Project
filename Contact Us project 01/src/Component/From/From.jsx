@@ -7,14 +7,15 @@ import { IoCallOutline } from "react-icons/io5";
 import "./From.css";
 
 function From() {
-    const [name, setName] = useState('s');
+    const [name, setName] = useState('');
     const [email, setemail] = useState('');
     const [text, setText] = useState('');
     const onSubmit = (event) => {
         event.preventDefault();
-        setName("name", event.target[0].value);
-        setemail("email", event.target.email.value);
-        setText("text", event.target.text.value);
+        // setName("name", event.target[0].value);
+        setName(event.target.name.value);
+        setemail( event.target.email.value);
+        setText(event.target.text.value);
     }
     
   return (
@@ -56,8 +57,9 @@ function From() {
               className="text-area"
             />
           </div>
-          <Button text={`send`}></Button>
-          {/* <div>{name + " " + email + " " + text}</div> */}
+          <Button type='submit' text={`send`}></Button>
+          <div>{` ${name}  ${email} 
+          `}</div>
         </form>
         <img src={img} alt="" className="img" />
       </section>
