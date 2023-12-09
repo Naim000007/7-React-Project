@@ -1,9 +1,9 @@
 import React from 'react'
 import './Button.css'
 
-function Button({text, icone, isTrue}) {
+function Button({text, icone, isTrue,...rst}) {
   return (
-    <button className={isTrue ? "outline_btn":"primary_btn" }>
+    <button {...rst} className={isTrue ? "outline_btn":"primary_btn" }>
      {icone}
      {text} 
     </button>
