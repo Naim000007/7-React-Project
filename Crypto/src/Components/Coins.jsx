@@ -11,7 +11,12 @@ const Coins = () => {
   const [loading , setLoading] = React.useState(true)
   const [page , setPage] = React.useState(1);
   const [currency , setCurrency] = React.useState('bdt');
-
+   
+  const changePage = (page)=>{
+    setPage(page)
+    setLoading(true)
+  }
+  const btns = new Array(132).fill(1 )
   useEffect (()=>{
     const fetchCoins = async()=>{
 
@@ -43,8 +48,16 @@ const Coins = () => {
           ))}
         </HStack>
 
-        <HStack>
-          <Button bgColor={"blackAlpha.900 "} color={"white"}  onClick={()=>changePage(2)}>2</Button>
+        <HStack w={"full"} overflowX={"auto"} margin={"8"}> 
+          {
+            btns.map((item, index)=>(
+              <Button bgColor={"blackAlpha.900"}
+              key={index}
+              color={"white"} onClick={()=> changePage(index+1)}>
+                {index+1}
+              </Button>
+            ))
+          }
         </HStack>
       </>
     )}
@@ -52,36 +65,6 @@ const Coins = () => {
 );
 };
 
-const ExchangesCard = ({name , img, rank , url})=>(
-  <a href={url} target={"blank"}>
-  <VStack
-    w={"52"}
-    shadow={"lg"}
-    p={"8"}
-    borderRadius={"lg"}
-    transition={"all 0.3s"}
-    m={"4"}
-    css={{
-      "&:hover": {
-        transform: "scale(1.1)",
-      },
-    }}
-  >
-    <Image
-      src={img}
-      w={"10"}
-      h={"10"}
-      objectFit={"contain"}
-      alt={"Exchange"}
-    />
-    <Heading size={"md"} noOfLines={1}>
-      {rank}
-    </Heading>
-
-    <Text noOfLines={1}>{name}</Text>
-  </VStack>
-</a>
-);
 
 
 export default Coins
