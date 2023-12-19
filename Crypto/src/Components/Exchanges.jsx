@@ -8,6 +8,8 @@ import Loader from '../Components/Loader'
 const Exchanges = () => {
   const [exchanges , setExchange] = React.useState([])
   const [loading , setLoading] = React.useState(true)
+  
+
   useEffect (()=>{
     const fetchExchanges = async()=>{
       const {data} = await axios.get(`${server}/exchanges`);
